@@ -12,6 +12,6 @@ public class Player {
     }
 
     public int getScore() {
-        return this.score;
+        return score;
     }
 }
