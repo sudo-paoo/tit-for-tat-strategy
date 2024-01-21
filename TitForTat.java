@@ -1,19 +1,13 @@
 public class TitForTat {
     char playerLastMove = 'n';
     int score = 0;
-
-    public char tftMove() {
-        if (playerLastMove == 'n') {
-            return 'C';
-        }
-        return this.playerLastMove;
+    public char makeMove() {
+        return (playerLastMove == 'n') ? 'C' : playerLastMove;
     }
-
     public void updatePlayerLastMove(char playerMove) {
         this.playerLastMove = playerMove;
     }
-
-    public void updateScore(char myMove, char opponentMove) {
+    public void updateScore(char myMove, char opponentMove){
         if (myMove == 'C' && opponentMove == 'C') {
             score += 3;
         } else if (myMove == 'D' && opponentMove == 'C') {
@@ -22,7 +16,6 @@ public class TitForTat {
             score += 1;
         }
     }
-
     public int getScore() {
         return this.score;
     }
