@@ -1,6 +1,6 @@
 # Prisoner's Dilemma Game
 
-This Java program simulates the classic game theory scenario known as the Prisoner's Dilemma. Two players can choose to cooperate or betray each other, earning points based on their choices. The game consists of two opponents: Tit-For-Tat and Friedman.
+This Java program simulates the classic game theory scenario known as the Prisoner's Dilemma. Two players can choose to cooperate or betray each other, earning points based on their choices. The game consists of two opponents: Tit-For-Tat, Friedman, and Randoomed.
 
 ## How to Play
 
@@ -8,6 +8,7 @@ This Java program simulates the classic game theory scenario known as the Prison
 
    - Tit-For-Tat (Enter 1)
    - Friedman (Enter 2)
+   - Random (Enter 3)
 
 2. **Game Rules:**
 
