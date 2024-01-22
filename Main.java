@@ -5,6 +5,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         TitForTat tft = new TitForTat();
         Friedman friedman = new Friedman();
+        Randoomed rand = new Randoomed();
         Player player = new Player();
 
         // initialization
@@ -20,10 +21,11 @@ public class Main {
         System.out.println("| Choose your opponent |");
         System.out.println("| [1] Tit-For-Tat      |");
         System.out.println("| [2] Friedman         |");
+        System.out.println("| [3] Randoomed        |");
         System.out.println("------------------------");
         System.out.print("Enter your choice: ");
         int choice = sc.nextInt();
-        while (choice != 1 && choice != 2) {
+        while (choice != 1 && choice != 2 && choice != 3) {
             System.out.print("Invalid input. Please enter 1 or 2: ");
             choice = sc.nextInt();
         }
@@ -61,6 +63,19 @@ public class Main {
                     friedman.updateScore(compMove, userMove);
                     player.updateScore(userMove, compMove);
                     break;
+                case 3:
+                    // randoomed
+                    System.out.println("\nRound " + round);
+                    userMove = getUserMove(sc);
+
+                    compMove = rand.makeMove();
+
+                    displayMoves(compMove, userMove);
+
+                    // update scores of both players
+                    rand.updateScore(compMove, userMove);
+                    player.updateScore(userMove, compMove);
+                    break;
                 default:
                     System.out.println("Something went wrong. Try again");
             }
@@ -69,7 +84,7 @@ public class Main {
         // Display scores at the end
         System.out.println("\nScores:");
         int playerScore = player.getScore();
-        int computerScore = getOpponentScore(choice, tft, friedman);
+        int computerScore = getOpponentScore(choice, tft, friedman, rand);
         System.out.println("-----------------------");
         System.out.println("| Computer Score: " + computerScore + " |");
         System.out.println("| Player Score: " + playerScore + "   |");
@@ -102,8 +117,13 @@ public class Main {
         System.out.println("----------------------");
     }
 
-    private static int getOpponentScore(int choice, TitForTat tft, Friedman friedman) {
-        return (choice == 1) ? tft.getScore() : friedman.getScore();
+    private static int getOpponentScore(int choice, TitForTat tft, Friedman friedman, Randoomed rand) {
+        if (choice == 1) {
+            return tft.getScore();
+        } else if (choice == 2) {
+            return friedman.getScore();
+        }
+        return rand.getScore();
     }
 
     private static void displayRules() {
